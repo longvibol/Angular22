@@ -44,3 +44,12 @@ const a: unknown = {name : "vibol", "age" : 30 }; // this is object type
 if( typeof a === 'object' && a != null && "name" in a){
     console.log(a.name);
 }
+
+// null and undefined
+
+let profilePicture: null = null;
+let notAssigned: undefined = undefined;
+
+// type inference
+let inferredNumber = 42;
+// inferredNumber = "hello"
