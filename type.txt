@@ -1,0 +1,101 @@
+Key word to declare variable 
+
+1-var : is the old one : ពេលយើងប្រើប្រាស់វានៅក្នុង function then we can called it outside. 
+ចឹងវាធ្វើអោយមាន bug កើតឡើង
+
+==> it has function scope, not bloc scope 
+
+2-let : we can declare it instead of var 
+
+ពេលយើងប្រើវានៅក្នុង function ហើយយើងមិនអាចយកវាមកប្រើនៅ ខាងក្រៅបានទៀតទេ
+
+==> block-level scope 
+
+3-const : after we assign we can not reassign it 
+
+គេប្រើប្រាស់វាជាមួយ API Called ព្រោះពេលយើងប្រើវាហើយ យើងមិនអាចប្តូរវាបានទេ
+
+ជា Default យើងប្រើប្រាស់ const ហើយវាយើងចង់ធ្វើការផ្លាស់ប្តូរតម្លៃតាមក្រោយយើង ប្រើប្រាស់ let
+
+==> never use Var in the modern typescript code (X)
+
+4- number 
+
+// number : no fload or big data 
+
+const productPrince: number = 200.99;
+const downloadCoount: number = 10000;
+const rating: number = 4.5;
+const temperature: number = -10;
+
+
+5- string
+
+const apiEndpoint: string = "http://api.examp.com/";
+const authToken: string = 'Bearer xyz123';
+const welcomeMessage: string = `Welcome to our platform`;
+const companyName: string = "TechCorp";
+
+
+6- boolean ( can have only true and false )
+
+const isAuthenticated: boolean = true;
+const hasSubscription: boolean =false;
+
+7- any ( temporarily )
+
+ប្រើប្រាស់បានទាំងអស់ យើងប្រាស់ពេលណា៖
+
+- working with Third-party Libraries 
+- Migrating old JavaScript code
+
+ពេលដែលយើងដឹង type វាហើយយើងត្រូវធ្វើការផ្លាស់ប្តូរមកអោយត្រូវ type វាវិញ
+
+Example :
+
+let res: any ={"name" :"Harsh"};
+console.log(res.toUpperCase()); // this will crashed at runtime
+
+
+>> run -> debuting 
+
+Uncaught TypeError TypeError: res.toUpperCase is not a function
+    at <anonymous> (/Users/vibol/Desktop/Angular22/typescript/data-type.ts:36:17)
+
+
+
+8- unknown: យើងប្រាស់ប្រាស់វា ពេលដែលយើងត្រូវធ្វើការ check it first ហើយយើងចង់បាន 
+Type safety 
+
+// unknow 
+
+const a: unknown = {name : "vibol", "age" : 30 }; // this is object type
+
+// console.log(a.name);  // this is error becasue it is object type 
+
+if( typeof a === 'object' && a != null && "name" in a){
+    console.log(a.name);
+}
+
+
+==> vibol 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ឱ
