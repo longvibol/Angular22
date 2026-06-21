@@ -1,0 +1,2 @@
+1- Data Binding : it is like the bright that allow the data to flow one side to other side 
+

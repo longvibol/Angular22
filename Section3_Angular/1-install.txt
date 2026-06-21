@@ -1,0 +1,68 @@
+1- install node 
+2- install npm 
+
+C:\Users\GE66>node -v
+v24.17.0
+
+C:\Users\GE66>npm -v
+11.13.0
+
+C:\Users\GE66>tsc -v
+Version 6.0.3
+
+3- install angular 
+
+>> npm install -g @angular/cli@20.3.10
+
+>> ng version 
+
+
+4- uninstall 
+
+>> npm uninstall -g @angular/cli
+
+>> npm cache clean --force
+
+5- create component 
+
+>> ng g c home && ng g c about && ng g c contact
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
