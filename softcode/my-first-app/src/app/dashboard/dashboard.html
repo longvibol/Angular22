@@ -36,7 +36,8 @@
 
   <div class="performance-section">
     <h3>Performance Status</h3>
-    @switch (performance) {
+    <!-- @switch (performance) { -->
+    @switch (getPerformanceLevel()) {
       @case ('poor') {
         <div>
           Performance needs immediate attention.

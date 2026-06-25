@@ -9,12 +9,12 @@ import { CommonModule } from '@angular/common';
 })
 export class Dashboard {
   //Properties for metrics
-  salesValue: number = 40000;
+  salesValue: number = 120000;
   targetValue: number = 100000;
 
   //Properties for styling demonstrations
   performance: string = 'excellent'; //options: poor, average, excellent
-  isActive: boolean = false;
+  isActive: boolean = true;
   statusColor: string = 'green';
   fontSize: number = 24;
 
@@ -60,4 +60,12 @@ export class Dashboard {
   {
     return this.employees.filter(emp=> emp.salary > 75000);
   }
+
+  getPerformanceLevel():string{
+     const percentage = (this.salesValue / this.targetValue) * 100;
+     if(percentage < 50) return 'poor';
+     else if (percentage <= 100) return 'average';
+     else return 'excellent';
+  }
+
 }
