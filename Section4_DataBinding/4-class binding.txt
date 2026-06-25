@@ -1,0 +1,97 @@
+- Class binding we change all the component inside the class 
+- Add or remove the class 
+
+CSS: 
+
+.success {
+  background-color: lightgreen;
+  color: darkgreen;
+  padding: 10px;
+}
+
+.danger {
+  background-color: lightpink;
+  color: darkred;
+  padding: 10px;
+}
+
+HTML:
+
+ <div class="metric-card" [class]="salesValue >= targetValue ? 
+   'success' : 'danger'">
+    <div class="label">Current Sales</div>
+    
+ ==> In Angular we can use shortcut way to create class binding we no need to use property binding 
+ 
+ [class.success]="salesValue >= targetValue" 
+ [class.danger]="salesValue < targetValue "
+ 
+ We use class.class
+ 
+ ----------------
+ 
+ Using object for class binding : we need to add stand alone import from Angular 
+ 
+ IN TS:
+ 
+ - CommonModule 
+ 
+ import { CommonModule } from '@angular/common';
+ 
+ IN HTML:
+ 
+ [ngClass]="{
+    'success':isActive, 'danger' : !isActive,
+    'highlight': true
+   }"
+   
+-----------------
+
+<div class="status-section">
+   <h3>System Status</h3>   
+   <div class="status-indicator"
+   [ngClass]="{
+    'success':isActive, 'danger' : !isActive,
+    'highlight': true
+   }"
+   [style]="{
+   'background-color': isActive ? 'lightgreen' : 'lightcoral',
+   'padding':'10px'
+  }">
+    System is {{isActive? 'Active' : 'Inactive'}}
+   </div>
+  </div>
+  
+  -----------------------
+  We put the class in the array :
+  
+  
+  <h3 [ngClass]="[ 'text-center' , 'text-large']">Employee List</h3>
+
+ ---------------------
+ 
+ Using Method to display classes : 
+ 
+ IN TS:
+ 
+ // class binding method 
+  getPerformanceClass(): string{
+      const percentage =(this.salesValue / this.targetValue) * 100;
+      if(percentage < 50)
+        return 'danger';
+      else if (percentage < 80)
+        return 'warning';
+      else
+        return 'success';
+    }
+  
+ IN HTML:
+ 
+ Cancantinate the class (string connect) 
+ <div [class]="getPerformanceClass() + 'metric-card'">
+ 
+ 
+ this is better than style (style is the inline style difficult to manintance) 
+ 
+ 
+ 

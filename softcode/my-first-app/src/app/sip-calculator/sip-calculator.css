@@ -73,3 +73,79 @@
 {
   text-align: left;
 }
+
+
+.amount-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.amount-controls button {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.amount-controls button:hover {
+  background: #e0e0e0;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.actions button {
+  padding: 12px 24px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actions button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.actions button:not(:disabled):hover {
+  background: #1976D2;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #2196F3;
+}
+
+.editing-hint {
+  color: #2196F3;
+  font-size: 14px;
+  margin-top: 10px;
+}

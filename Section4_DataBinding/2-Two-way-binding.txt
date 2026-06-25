@@ -1,0 +1,30 @@
+1-Two-way-binding
+
+		<th><input type="number" [value]="investmentPeriod" 
+                    (input)="updatePeriod($event)">
+                     <p>Current value: {{investmentPeriod}}</p>
+                </th>
+                
+- [value]="investmentPeriod"  : property binding 
+- (input)="updatePeriod($event)" : event binding 
+
+==> we combine together to produce : two-way-binding : banana in the box : [()]
+
+1- First we need to add FormModules to the ts 
+
+@Component({
+  selector: 'app-sip-calculator',
+  imports: [FormsModule],
+  templateUrl: './sip-calculator.html',
+  styleUrl: './sip-calculator.css',
+})
+
+2- in the template 
+
+ <th><input type="number" [(ngModel)]="monthlyAmount">
+ 
+ 
+
+
+
+
