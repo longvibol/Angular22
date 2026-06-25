@@ -1,0 +1,73 @@
+@if : for Active condition (directive)
+
+ប្រើសម្រាប់ពេលដែលយើង ចង់ បង្ហាញ ឬ មិនបង្ហាញ element to the template 
+
+Ts:
+
+isActive = true;
+
+HTML 
+
+@if (isActive){
+    <p>System is running smoothly.</p>
+   }
+   
+==> it will show to <p> to the template 
+
+EX1: apply class 
+
+CSS:
+
+.badge {
+  background-color: gold;
+  color: darkbrown;
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+IN HTML:
+
+<div class="metric-cards">
+   <div class="metric-card" 
+   [class.success]="salesValue >= targetValue" 
+   [class.danger]="salesValue < targetValue ">
+    <div class="label">Current Sales</div>
+    <div class="value" [style.color]="salesValue >= targetValue ?
+    'green':'red'">${{salesValue}}</div>
+
+      @if(salesValue > targetValue){
+        <div class="badge">
+          Target Exceeded!
+        </div>
+      }
+
+   </div>
+   
+   
+----------------------------------
+
+put the method with @if condition:
+
+HTML:
+
+@if(shouldShowWarning()){
+    <div class="warning-message">
+      Warning: Sales are critically low!
+    </div>
+  }
+ 
+ TS:
+ 
+ // @if
+   shouldShowWarning(): boolean{
+    const percentage =(this.salesValue / this.targetValue) * 100;
+      return percentage < 50;
+    }
+    
+ 
+  
+
+
+

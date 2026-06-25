@@ -1,0 +1,102 @@
+we use the style binding to make the UI more responsive. 
+
+TS:
+
+statusColor: string = 'green';
+
+HTML:
+
+<div class="value" [style.color]="salesValue >= targetValue ?
+    'green':'red'">${{salesValue}}</div>
+   </div>
+   
+-> we put the condition : [style.color]
+
+Other example :
+
+<div class="status-section">
+   <h3>System Status</h3>   
+   <div class="status-indicator"
+   [style.backgroundColor]="isActive? 'lightgreen' : 'lightcoral'"
+   [style.padding]="'10px'"
+   >
+    System is {{isActive? 'Active' : 'Inactive'}}
+   </div>
+  </div>
+  
+ - [style.backgroundColor]="isActive? 'lightgreen' : 'lightcoral'"
+   [style.padding]="'10px'"
+   
+ ==> we can combine them one style object:
+ 
+ [style]="{
+   'background-color': isActive ? 'lightgreen' : 'lightcoral',
+   'padding':'10px',
+   'border-radius':'5px'
+  }"
+  
+  -- [style.backgroundColor]="isActive? 'lightgreen' : 'lightcoral'" called dynamic 
+  
+  
+  =================
+  
+  <div class="status-section">
+   <h3>System Status</h3>   
+   <div class="status-indicator"
+   [style]="{
+   'background-color': isActive ? 'lightgreen' : 'lightcoral',
+   'padding':'10px',
+   'border-radius':'5px'
+  }">
+    System is {{isActive? 'Active' : 'Inactive'}}
+   </div>
+  </div>
+  
+  ================
+  
+  static style :  <h2 [style.color]="statusColor">Sales Dashboard</h2>
+  
+  statusColor is set to green in the TS
+  
+  -----------------------------------
+  
+  Font size : 
+  
+  TS:
+  
+  fontSize:number =24;
+
+
+HTML:
+
+<div class="label" [style.font-size.px]="fontSize">Target Achieved</div>
+
+Note we can add the .em ; .rem; %, .vm
+
+
+-------------------- usuing method to style dynamicaly 
+
+IN TS:
+
+getPerformanceColor(): string{
+    const percentage =(this.salesValue / this.targetValue) * 100;
+    if(percentage < 50)
+      return 'red';
+    else if (percentage < 80)
+      return 'orange';
+    else
+      return 'green';
+  }
+
+
+IN HTML:
+
+[style.color]="getPerformanceColor()"
+
+  
+  
+  
+ 
+
+
+
