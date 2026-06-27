@@ -1,0 +1,79 @@
+<div class="task-manager-container">
+<!-- header section starts -->
+ <div class="header-section">
+
+    <h1>{{'Task Manager'}}</h1>
+    <p class="header-subtitle">
+        Web Academy by LONG VIBOL
+    </p>
+<!-- Statistics Cards starts -->
+ <div class="stats-container">
+    <div class="stat-card">
+        <div class="stat-lable">Total Tasks</div>
+        <div class="stat-value">{{tasks.length}}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-lable">Completed</div>
+        <div class="stat-value">{{getCompletedTaskCount()}}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-lable">Pending</div>
+        <div class="stat-value">{{getPendingTaskCount()}}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-lable">Overdue</div>
+        <div class="stat-value">{{getOverdueTasksCount()}}</div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-label">Completion Rate</div>
+        <div class="stat-value" [style.color]="getCompletionRate() > 70? '#10b981' : getCompletionRate() > 40? '#f59e0b': '#ef4444'">
+        {{getCompletionRate()}}%
+        </div>
+        </div>
+    </div>
+<!-- Statistics Cards end -->
+
+<!-- Quick Actions bar starts -->
+<div class="quick-actions">
+    <select class="filter-dropdown" [(ngModel)]="filterStatus">
+        <option value="all">All Status</option>
+        @for (status of statuses; track status){
+            <option [value]="status">{{status}}</option>
+        }
+    </select>
+
+    <select class="filter-dropdown" [(ngModel)]="filterCategory">
+        <option value="all">All Categories</option>
+        @for (category of categories; track category){
+            <option [value]="category">{{category}}</option>
+        }
+    </select>
+
+    <select class="filter-dropdown" [(ngModel)]="filterPriority">
+        <option value="all">All Priorities</option>
+        @for (priority of priorities; track priority){
+            <option [value]="priority">{{priority}}</option>
+        }
+    </select>
+
+    <label style="display: flex; align-items: center; gap: 8px; color: #1e293b;" 
+       for="showCompletedTasks">
+        <input type="checkbox" [(ngModel)]="showCompleted" id="showCompletedTasks">
+        Show Completed Tasks
+    </label>
+</div>
+<!-- Quick Actions Cards ends -->
+
+<!-- Productivity alert start -->
+@switch (getProductivityLevel()) {}
+
+<!-- Productivity alert end -->
+
+ </div>
+ <!-- header section end -->
+
+</div>
