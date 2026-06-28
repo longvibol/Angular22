@@ -1,5 +1,5 @@
-import { CommonModule, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface Task
@@ -15,14 +15,15 @@ interface Task
   completedAt?: Date;
 }
 
+
 @Component({
   selector: 'app-task-manager',
   imports: [CommonModule, FormsModule],
   templateUrl: './task-manager.html',
   styleUrl: './task-manager.css',
 })
-export class TaskManager {
-
+export class TaskManager
+{
   //Core data
   tasks: Task[] = [
     {
@@ -57,63 +58,106 @@ export class TaskManager {
     }
   ];
 
-  //Droupdown Options
-  categories: string[] = ['work','personal','shopping','health','finance','education','other'];
-  priorities: string[] = ['low','medium','high','urgent'];
-  statuses: string[] =['pending','in-progress','completed','cancelled'];
+  //Dropdown Options
+  categories: string[] = ['work', 'personal', 'shopping', 'health', 'finance', 'education', 'other'];
+  priorities: string[] = ['low', 'medium', 'high', 'urgent'];
+  statuses: string[] = ['pending', 'in-progress', 'completed', 'cancelled'];
 
   //Form data
-  newTask:{
+  newTask: {
     title: string,
     description: string,
     category: string,
     priority: string,
     dueDate: string | Date,
     status: string
-  } ={
+  } = {
     title: '',
     description: '',
     category: '',
     priority: 'medium',
     dueDate: '',
     status: 'pending'
-  }
+  };
 
-  // Filter controls
-  filterStatus: string ='all';
+  //Filter controls
+  filterStatus: string = 'all';
   filterCategory: string = 'all';
   filterPriority: string = 'all';
   showCompleted: boolean = true;
 
-  //Method
-  getCompletedTaskCount() : number{
+  //Methods
+  getCompletedTasksCount(): number
+  {
     return this.tasks.filter(task => task.status === 'completed').length;
   }
 
-  getPendingTaskCount() : number{
+  getPendingTasksCount(): number
+  {
     return this.tasks.filter(task => task.status === 'pending').length;
   }
-// dueDate = deadline and overdue = late
-  getOverdueTasksCount(): number {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
 
-  return this.tasks.filter(task => {
-    const dueDate = new Date(task.dueDate);
-    dueDate.setHours(0, 0, 0, 0); // Clear time on the task date too!
-    
-    return dueDate < today && task.status !== 'completed';
-  }).length;
+  getOverdueTasksCount(): number
+  {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return this.tasks.filter(task => new Date(task.dueDate) < today && task.status != 'completed').length;
   }
 
-  getCompletionRate(): number{
-    if(this.tasks.length == 0) return 0;
-    return Math.round((this.getCompletedTaskCount() / this.tasks.length) * 100);
+  getCompletionRate(): number
+  {
+    if (this.tasks.length == 0) return 0;
+    return Math.round((this.getCompletedTasksCount() / this.tasks.length) * 100);
   }
 
-  getProductivityLevel(){
-    
+  getProductivityLevel(): string
+  {
+    const rate = this.getCompletionRate();
+    if (rate >= 80) return 'excellent';
+    if (rate >= 60) return 'good';
+    if (rate >= 40) return 'needs-improvement';
+    return 'poor';
   }
 
+  onFieldFocus(field: string): void
+  {
+    //Could add validation feedback here
+  }
 
+  onFieldBlur(field: string): void
+  {
+    //Could add validation feedback here
+  }
+
+  addTask(): void {
+    if(!this.newTask.title || !this.newTask.category || !this.newTask.dueDate){
+      return;
+    }
+    const task: Task ={
+      id: Date.now(),
+      title: this.newTask.title,
+      description: this.newTask.description,
+      category: this.newTask.category,
+      priority: this.newTask.priority,
+      dueDate: new Date(this.newTask.dueDate),
+      status: this.newTask.status,
+      createdAt: new Date()
+    };
+    // Using push method from Array to add the element 
+    this.tasks.push(task);
+    this.clearForm();
+
+    console.log("addTask working");
+  }
+
+  clearForm() {
+    this.newTask ={
+      title: '',
+      description: '',
+      category: '',
+      priority: 'medium',
+      dueDate: '',
+      status: 'pending'
+    };
+  }
 }
