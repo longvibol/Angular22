@@ -1,6 +1,6 @@
 <div class="calculator-container">
 
-    <img [src]="logoUrl" />
+    <!-- <img [src]="logoUrl" /> -->
     <h2>{{title}}</h2>
 
     <div class="input-summary">
@@ -16,7 +16,7 @@
             <tr>
                 <td>Investment Period:</td>
                 <th><input type="number" [value]="investmentPeriod" 
-                    (input)="updatePeriod($event)">
+                    (input)="updatePeriod($event)" (change)="onPeriodComplete($event)">
                      <p>Current value: {{investmentPeriod}}</p>
                 </th>
             </tr>

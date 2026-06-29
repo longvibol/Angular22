@@ -94,5 +94,10 @@ export class SipCalculator {
     this.expectedReturnRate = value;
   }
 
+  // Change Event binding 
+  onPeriodComplete(event: Event){
+    console.log("Change event fired");
+  }
+
 
 }
