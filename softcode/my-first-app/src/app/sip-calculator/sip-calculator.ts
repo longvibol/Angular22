@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sip-calculator',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './sip-calculator.html',
   styleUrl: './sip-calculator.css',
 })
@@ -14,17 +15,17 @@ export class SipCalculator {
   investmentPeriod: number = 10; //in years
   expectedReturnRate: number = 12; //percentage
   
-  //For safe navigation demo
-  fundName: string | null = "Hello";
-
   //Calculated results
   totalInvestment: number = 0;
-  maturityAmount: number = 0;
-  estimatedReturns: number = 0;
+  maturityAmount : number = 0;
+  estimatedReturns : number = 0;
 
-  // For properties binding example
-  logoUrl:string = "assets/logo.png";
-  buttonTooltip: string = "Click to calculate your SIP returns"
+  //constructor
+  constructor()
+  {
+    this.calculateReturns();
+  }
+
 
   //Calculate actual SIP returns
   calculateReturns(): void
@@ -42,7 +43,10 @@ export class SipCalculator {
 
     //Calculate returns
     this.estimatedReturns = this.maturityAmount - this.totalInvestment;
-  }    
+  }
+
+  //For property binding examples
+  buttonTooltip: string = "Click to recalculate with current values";
 
   //Simple calculation method
   calculateYearlyInvestment(): number
@@ -50,27 +54,24 @@ export class SipCalculator {
     return this.monthlyAmount * 12;
   }
 
-  // Method to adjust monthly amount
-  adjustAmount(amount:number): void{
-    this.monthlyAmount = Math.max(0, this.monthlyAmount + amount);
+  onPeriodComplete(event: Event): void
+  {
+    console.log('Change event fired');
   }
 
-  // Method to show event details 
-  showEventDetails(event: MouseEvent): void{
-    console.log("Clicked at coordinates: ", event.clientX, event.clientY);
+  //Property for tracking currently editing field
+  currentlyEditing: string = '';
+
+  onFieldFocus(fieldName: string): void
+  {
+    this.currentlyEditing = fieldName;
   }
 
-
-  // Event Binding : MonthlyAmount
-  updateMonthlyAmount(event: Event):void{
-   const target = event.target as HTMLInputElement;
-   const value : number = +target.value;
-
-  if (isNaN(value))
-    this.monthlyAmount = 0;
-  else
-    this.monthlyAmount = value;
+  onFieldBlur(): void
+  {
+    this.currentlyEditing = '';
   }
+<<<<<<< HEAD
 
   // Event Binding : MonthlyAmount
   updatePeriod(event: Event):void{
@@ -100,4 +101,6 @@ export class SipCalculator {
   }
 
 
+=======
+>>>>>>> d6be3e1823e153e5bd4b01dfa2881567a9d92f79
 }

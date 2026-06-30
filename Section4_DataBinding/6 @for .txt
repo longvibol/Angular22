@@ -1,0 +1,123 @@
+@for សម្រាប់ធ្វើការ display element to the template 
+
+Example :
+
+TS
+
+//Employee data for list demonstrations
+  employees: { id: number, name: string, role: string, salary: number}[] =
+  [
+    { id: 1, name: 'John Smith', role: 'Manager', salary: 85000 },
+    { id: 2, name: 'Sarah Johnson', role: 'Developer', salary: 75000 },
+    { id: 3, name: 'Mike Davis', role: 'Designer', salary: 65000 },
+    { id: 4, name: 'Emily', role: 'Product Owner', salary: 90000 }
+  ]
+  ;
+  
+  HTML:
+  
+    <div class="employee-section">
+   <h3 [ngClass]="[ 'text-center', 'text-large']">Employee List</h3>
+   @if (employees && employees.length > 0)
+   {
+    @for(employee of employees; track employee.id){
+      <div class="employee-card" [class.high-salary]="employee.salary > 80000" >
+        <h4>{{employee.name}}</h4>
+        <p>Role: {{employee.role}}</p>
+        <p>Salary: ${{employee.salary}}</p>
+      </div>
+    }
+   }
+  </div>
+  
+ - track employee.id សំខាន់សម្រាប់អាចអោយ Angular ធ្វើការកំណត់អ្វីដែលបានធ្វើការផ្លាស់ប្តូរ
+  
+ - យើងធ្វើការដាក់លក្ខណ បានលើការ display 
+ 
+ <div class="employee-card" [class.high-salary]="employee.salary > 80000" >
+ 
+ បើតម្លៃវាធំជាង 80k it will use the class : high-salary
+ 
+ --------------------------------------------- 
+ 
+ យើងអាចដាក់លក្ខណ ដើម្បីធ្វើអោយវា loop :
+ 
+ TS: 
+ 
+   getHightPerformers():{id:number, name: string, role: string, salary: number}[]
+  {
+    return this.employees.filter(emp=> emp.salary > 75000);
+  }
+  
+ យើងដាក់ចង់បង្ហាញ employess ដែលមានប្រាក់ខែ ច្រើនជាង​​ 75000 then show to the template 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

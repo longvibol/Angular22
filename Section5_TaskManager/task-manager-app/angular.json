@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-first-app": {
+    "task-manager-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-first-app:build:production"
+              "buildTarget": "task-manager-app:build:production"
             },
             "development": {
-              "buildTarget": "my-first-app:build:development"
+              "buildTarget": "task-manager-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,8 +88,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "c557ba31-da4d-4239-a17b-0dc325b63f57"
   }
 }
