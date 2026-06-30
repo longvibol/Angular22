@@ -160,4 +160,61 @@ export class TaskManager
       status: 'pending'
     };
   }
+
+  getFilteredTasks():Task[]{
+    // copy from original tasks array
+    let filtered = [...this.tasks];
+    if(this.filterStatus !=='all'){
+      filtered = filtered.filter(task => task.status === this.filterStatus);
+    }
+
+    if(this.filterCategory !=='all'){
+      filtered = filtered.filter(task => task.category === this.filterCategory);
+    }
+
+    if(this.filterPriority !=='all'){
+      filtered = filtered.filter(task => task.priority === this.filterPriority);
+    }
+
+    if(!this.showCompleted){
+      filtered = filtered.filter(task => task.status !== "completed");
+    }
+    return filtered;
+  }
+
+  // change status from completed to pending so on
+  toggleTaskComplete(id: number): void{
+
+    // find the task by id
+    const task = this.tasks.find(t => t.id === id);
+    if(task){
+        if(task.status === 'completed')
+        {
+          task.status = 'pending';
+          delete task.completedAt;
+        }
+        else
+        {
+          task.status = 'completed';
+          task.completedAt =  new Date();
+        }
+    }
+  }
+
+  isOverdue(task: Task): boolean
+  {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return new Date(task.dueDate) < today && task.status != 'completed';
+  }
+
+  deleteTask(id: number): void
+  {
+    const index = this.tasks.findIndex(task => task.id === id);
+    if (index !== -1)
+    {
+      this.tasks.splice(index, 1);
+    }
+  }
+
 }

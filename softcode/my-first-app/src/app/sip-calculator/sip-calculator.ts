@@ -71,4 +71,36 @@ export class SipCalculator {
   {
     this.currentlyEditing = '';
   }
+<<<<<<< HEAD
+
+  // Event Binding : MonthlyAmount
+  updatePeriod(event: Event):void{
+   const target = event.target as HTMLInputElement;
+   const value : number = +target.value;
+
+  if (isNaN(value) || value < 1)
+    this.investmentPeriod = 1;
+  else
+    this.investmentPeriod = value;
+  }
+
+  // Event Binding : ExpectedReturnRate
+  updateExpectedResturnRate(event: Event):void{
+   const target = event.target as HTMLInputElement;
+   const value : number = +target.value;
+
+  if (isNaN(value) || value < 1)
+    this.expectedReturnRate = 1;
+  else
+    this.expectedReturnRate = value;
+  }
+
+  // Change Event binding 
+  onPeriodComplete(event: Event){
+    console.log("Change event fired");
+  }
+
+
+=======
+>>>>>>> d6be3e1823e153e5bd4b01dfa2881567a9d92f79
 }

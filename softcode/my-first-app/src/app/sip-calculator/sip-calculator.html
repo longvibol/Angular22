@@ -1,6 +1,36 @@
 <div class="calculator-container">
   <h2>{{ title }}</h2>
 
+<<<<<<< HEAD
+    <!-- <img [src]="logoUrl" /> -->
+    <h2>{{title}}</h2>
+
+    <div class="input-summary">
+        <h3>Investment Details</h3>
+        <table>
+            <tr>
+                <td>Monthly SIP Amount:</td>
+                <th><input type="number" [value]="monthlyAmount" 
+                    (input)="updateMonthlyAmount($event)">
+                    <p>Current value: {{monthlyAmount}}</p>
+                </th>
+            </tr>
+            <tr>
+                <td>Investment Period:</td>
+                <th><input type="number" [value]="investmentPeriod" 
+                    (input)="updatePeriod($event)" (change)="onPeriodComplete($event)">
+                     <p>Current value: {{investmentPeriod}}</p>
+                </th>
+            </tr>
+            <tr>
+                <td>Expected Annual Return (%):</td>
+                <th><input type="number" [value]="expectedReturnRate" 
+                    (input)="updateExpectedResturnRate($event)">
+                     <p>Current value: {{expectedReturnRate}}</p>
+                </th>
+            </tr>
+        </table>
+=======
   <div class="input-summary">
     <h3>Investment Details</h3>
     <table>
@@ -47,6 +77,7 @@
         <div class="label">Maturity Amount</div>
         <div class="amount">${{ maturityAmount }}</div>
       </div>
+>>>>>>> d6be3e1823e153e5bd4b01dfa2881567a9d92f79
     </div>
   </div>
 
