@@ -1,0 +1,49 @@
+1- Create component 
+
+
+>> ng g c log-demo
+
+2- inject the service 
+
+injection mean : to ask the Angular to provide the instance of the service 
+
+យើងធ្វើការដាក់វា នៅក្នុង constructor ពេលដែល component start it will find the service first 
+
+in the component:
+
+
+import { Component } from '@angular/core';
+import { LoggerService } from '../services/logger';
+
+@Component({
+  selector: 'app-log-demo',
+  imports: [],
+  templateUrl: './log-demo.html',
+  styleUrl: './log-demo.css',
+})
+export class LogDemo {
+
+  constructor(private LoggerService: LoggerService) {}
+
+  onLogClick(): void {
+    this.LoggerService.log('This is a log message.');
+  }
+
+  onWarnClick(): void {
+    this.LoggerService.warn('This is a warning message.');
+  }
+
+  onErrorClick(): void {
+    this.LoggerService.error('This is an error message.');
+  }
+
+}
+
+
+
+
+
+
+
+
+

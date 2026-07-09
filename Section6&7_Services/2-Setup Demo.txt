@@ -1,0 +1,64 @@
+1-create project demo on service 
+
+>> ng new service-demo 
+
+>> ng g s service/logger
+
+2- inside service 
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Logger {
+  
+}
+
+
+Explain:
+
+1- Decorator 
+
+@Injectable({
+  providedIn: 'root',
+})
+
+បើអត់មានវាទេ វាមិនអាច provide service to another component នោះទេ
+ providedIn: 'root',​ ប្រាប់ទៅគ្រាប់ component ទាំំងអស់
+
+--------------------------------------------------------
+
+This is the service:
+
+==================================================================================
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class LoggerService {
+
+  private getTimestamp(): string {
+    return new Date().toLocaleTimeString();
+  }
+
+  log(message: string): void 
+  {
+    console.log(`[${this.getTimestamp()}] [LOG]: ${message}`);
+  }
+
+  warn(message: string): void 
+  {
+    console.log(`[${this.getTimestamp()}] [WARN]: ${message}`);
+  }
+
+  error(message: string): void 
+  {
+    console.log(`[${this.getTimestamp()}] [ERROR]: ${message}`);
+  }
+  
+}
+
+==================================================================================

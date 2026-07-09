@@ -1,0 +1,19 @@
+Why need service?
+
+- We write all the code in one component (for small app it is working fine)
+
+But when the app bigger it is the problem :
+
+- All the endpoint will be use and call from different components ពេលដែលយើងត្រូវការ update component យើងត្រូវធ្វើការ update ទាំងបី
+
+Concept of the service is like the helper (that sit outside the component) 
+
+- Advantage of using service:
+
+1- write the logic once can use it in many components 
+2- Separate of Concerns = Split Responsibilities (Service : Business logic, Data handling, API calls)
+
+3- easy testing 
+
+
+
