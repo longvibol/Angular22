@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class Counter {
+export class CounterServic {
 
   private count: number = 0;
 
@@ -12,11 +12,11 @@ export class Counter {
   }
 
   increment(): void {
-    this.count++;
+    this.count +=10;
   }
 
   decrement(): void {
-    this.count--;
+    this.count-=5;
   }
 
   reset(): void {
