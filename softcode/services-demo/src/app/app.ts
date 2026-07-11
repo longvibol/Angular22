@@ -5,10 +5,11 @@ import { AnotherDemo } from './another-demo/another-demo';
 import { CounterControls } from './counter-controls/counter-controls';
 import { CounterDisplay } from './counter-display/counter-display';
 import { CounterStatus } from './counter-status/counter-status';
+import { CounterSection } from './counter-section/counter-section';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,LogDemo, AnotherDemo,CounterControls, CounterDisplay,CounterStatus],
+  imports: [RouterOutlet,LogDemo, AnotherDemo,CounterSection],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
