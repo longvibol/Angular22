@@ -12,11 +12,11 @@ export class CounterServic {
   }
 
   increment(): void {
-    this.count +=10;
+    this.count +=1;
   }
 
   decrement(): void {
-    this.count-=5;
+    this.count-=1;
   }
 
   reset(): void {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { CounterServic } from '../services/counter';
 
 @Component({
@@ -9,7 +9,9 @@ import { CounterServic } from '../services/counter';
 })
 export class CounterDisplay {
 
-  constructor(private counterService: CounterServic){}
+  private counterService : CounterServic = inject(CounterServic);
+
+  // constructor(private counterService: CounterServic){}
 
   getCurrentCount(): number{
     return this.counterService.getCount();
