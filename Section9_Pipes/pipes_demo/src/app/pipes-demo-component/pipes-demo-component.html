@@ -89,5 +89,16 @@
    <p>Truncated at 30: {{description | truncate:30}}</p>
    <p>Truncated at 80: {{description | truncate:80}}</p>
   </section>
-  
+
+  <!-- Pure vs Impure Pipes -->
+  <section>
+   <h2>Pure vs Impure Pipes</h2>
+
+   <p>Counter: {{counter}}</p>
+
+   <button (click)="incrementCounter()">Increment Counter</button>
+
+   <p>Pure Pipe: {{description | truncate:40 }}</p>
+   <p>Impure Pipe: {{description | truncateImpure:40 }}</p>
+  </section>
 </div>

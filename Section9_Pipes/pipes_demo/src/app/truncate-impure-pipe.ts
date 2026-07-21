@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'truncate'
+  name: 'truncateImpure',
+  pure: false
 })
-export class TruncatePipe implements PipeTransform {
+export class TruncateImpurePipe implements PipeTransform {
 
-  transform(value: string, limit: number = 50): string
+ transform(value: string, limit: number = 50): string
   {
-    console.log('Pure pipe executed');
+    console.log('Impure pipe executed');
     if (!value)
       return '';
 
@@ -16,4 +17,5 @@ export class TruncatePipe implements PipeTransform {
 
     return value.substring(0, limit) + '...';
   }
+
 }
